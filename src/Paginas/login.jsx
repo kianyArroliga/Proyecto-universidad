@@ -16,17 +16,16 @@ export default function LandingAuth() {
             </div>
 
             {/* Contenido */}
-            <main className="relative z-10 mx-auto grid min-h-screen max-w-screen-xl place-items-center px-6">
-                <motion.section
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
-                    className="w-full"
-                >
-                    {/* Panel */}
-                    <div className="relative rounded-3xl border border-neutral-200 bg-white/80 p-2 shadow-none backdrop-blur-xl">
-                        <div className="grid gap-0 rounded-[calc(theme(borderRadius.3xl)-8px)] bg-white/40 md:grid-cols-2">
-
+            <main className="relative z-10 min-h-screen flex items-center justify-center px-4">
+  <motion.section
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.45, ease: "easeOut" }}
+    className="w-full max-w-5xl"
+  >
+    <div className="relative mx-auto rounded-3xl border border-neutral-200 bg-white/80 p-2 shadow-none backdrop-blur-xl">
+      <div className="grid items-center md:grid-cols-2 gap-0 rounded-[calc(theme(borderRadius.3xl)-8px)] bg-white/40">
+   
                             {/* IZQUIERDA */}
                             <div className="relative rounded-[inherit] p-10 flex flex-col">
                                 {/* Separador vertical */}
