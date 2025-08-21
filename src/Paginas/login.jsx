@@ -3,9 +3,16 @@ import { Star, CheckSquare, Eye, EyeOff } from "lucide-react";
 import { motion } from "framer-motion";
 import fondo from "../assets/Ulatina-Sede-Heredia.jpg";
 import logo from "../assets/logo_ulatina_1.png";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingAuth() {
     const [showPwd, setShowPwd] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();                      
+        navigate("/inicio");                  
+    };
 
     return (
         <div className="relative min-h-screen overflow-hidden text-neutral-900">
@@ -26,8 +33,8 @@ export default function LandingAuth() {
 
                     <div className="relative mx-auto rounded-[28px] border border-white/70 bg-white/95 backdrop-blur-xl shadow-2xl">
 
-                        <div className="grid items-center justify-items-center gap-8 rounded-[inherit] bg-white p-6 md:grid-cols-2 md:p-10">
-
+                        <div
+                            className=" grid items-center gap-8 rounded-[inherit] bg-white p-6 md:grid-cols-2 md:p-10 justify-items-center md:justify-items-start">
                             {/* IZQUIERDA */}
                             <div className="w-full max-w-md self-center">
                                 <div className="mx-auto md:mx-0 w-64 sm:w-72 md:w-96 lg:w-[28rem] shrink-0">
@@ -67,11 +74,7 @@ export default function LandingAuth() {
 
                                 <form
                                     className="mt-6 space-y-4"
-                                    onSubmit={(e) => {
-                                        e.preventDefault();
-                                        const data = new FormData(e.currentTarget);
-                                        console.log(Object.fromEntries(data.entries()));
-                                    }}
+                                    onSubmit={handleSubmit}
                                 >
                                     <div>
                                         <label htmlFor="email" className="mb-1 block text-sm text-neutral-700">
