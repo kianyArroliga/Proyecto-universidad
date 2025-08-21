@@ -12,7 +12,7 @@ import Inicio from './paginas/inicio';
 // --- Componentes mínimos ---
 function RootRedirect() {
   // Redirige / -> /usuario/login
-  return <Navigate to="/usuario/login" replace />;
+  return <Navigate to="/inicio" replace />;
 }
 
 function LayoutUsuario() {
