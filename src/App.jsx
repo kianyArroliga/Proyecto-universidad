@@ -7,7 +7,8 @@ import MainContent from './componentes/MainContent';
 import UserProfile from './componentes/UserProfile';
 import Sidebar from './componentes/Sidebar';
 import Plantilla from './Paginas/plantilla';
-import Inicio from './Paginas/inicio';
+import Inicio from './paginas/inicio';
+import ListaMaterias from './paginas/listaMaterias';
 
 // --- Componentes mínimos ---
 function RootRedirect() {
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
 
       <Route path="/plantilla" element={<Plantilla />} />
       <Route path="/inicio" element={<Inicio />} />
+      <Route path="/listaMaterias" element={<ListaMaterias/>} />
       <Route path="*" element={<ErrorPage />} />
     </>
   )

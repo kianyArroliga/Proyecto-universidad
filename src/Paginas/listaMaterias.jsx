@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Bell, Menu, X, Home, BookOpen, BarChart3, User, Settings, LogOut, Sun, Moon } from 'lucide-react';
 
@@ -14,6 +13,13 @@ const Dashboard = () => {
         { icon: User, label: 'Perfil de Usuario', active: false },
         { icon: Settings, label: 'Configuración', active: false },
         { icon: LogOut, label: 'Cerrar Sesión', active: false },
+    ];
+
+    const materias = [
+        { nombre: 'Anatomía Dental', pendiente: 3, icon: <BookOpen size={20} className="text-green-600" /> },
+        { nombre: 'Periodoncia', pendiente: 2, icon: <BarChart3 size={20} className="text-blue-600" /> },
+        { nombre: 'Endodoncia', pendiente: 1, icon: <User size={20} className="text-purple-600" /> },
+        { nombre: 'Cirugía Oral', pendiente: 5, icon: <Home size={20} className="text-red-600" /> },
     ];
 
     return (
@@ -46,16 +52,14 @@ const Dashboard = () => {
                     <nav className="space-y-2">
                         {menuItems.map((item, index) => {
                             const Icon = item.icon;
+                            const isLogout = item.label === 'Cerrar Sesión';
                             return (
                                 <a
                                     key={index}
                                     href="#"
-                                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group ${item.active
-                                            ? 'bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg'
-                                            : 'text-gray-600 hover:bg-green-50 hover:text-green-700'
-                                        }`}
+                                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group ${item.active ? 'bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg transform hover:scale-105' : isLogout ? 'text-gray-600 hover:bg-red-50 hover:text-red-600' : 'text-gray-600 hover:bg-green-50 hover:text-green-700'}`}
                                 >
-                                    <Icon size={20} className={`${item.active ? 'text-white' : 'text-gray-500 group-hover:text-green-600'}`} />
+                                    <Icon size={20} className={`${item.active ? 'text-white' : isLogout ? 'text-gray-500 group-hover:text-red-600' : 'text-gray-500 group-hover:text-green-600'}`} />
                                     {!sidebarCollapsed && (
                                         <span className="font-medium">{item.label}</span>
                                     )}
@@ -66,14 +70,11 @@ const Dashboard = () => {
                             );
                         })}
                     </nav>
-
-
-
                 </div>
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col min-h-screen">
                 {/* Top Header */}
                 <header className="bg-white shadow-sm border-b border-gray-200 px-8 py-6">
                     <div className="flex items-center justify-between">
@@ -119,68 +120,19 @@ const Dashboard = () => {
 
                 {/* Main Content */}
                 <main className="flex-1 p-8 overflow-y-auto">
-                    <div className="max-w-7xl mx-auto">
-                        {/* Quick Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                            {[
-                                { title: 'Materias Activas', value: '6', color: 'from-blue-500 to-blue-600', icon: BookOpen },
-                                { title: 'Promedio General', value: '8.7', color: 'from-green-500 to-green-600', icon: BarChart3 },
-                                { title: 'Tareas Pendientes', value: '3', color: 'from-orange-500 to-orange-600', icon: Bell },
-                                { title: 'Días hasta Examen', value: '12', color: 'from-purple-500 to-purple-600', icon: Home },
-                            ].map((stat, index) => {
-                                const Icon = stat.icon;
-                                return (
-                                    <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-                                        <div className="flex items-center justify-between">
-                                            <div>
-                                                <p className="text-gray-600 text-sm font-medium">{stat.title}</p>
-                                                <p className="text-3xl font-bold text-gray-800 mt-1">{stat.value}</p>
-                                            </div>
-                                            <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center`}>
-                                                <Icon size={24} className="text-white" />
-                                            </div>
-                                        </div>
+                    <div className="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 className="text-xl font-bold text-gray-800 mb-4">Mis Materias</h2>
+                        <ul className="space-y-4">
+                            {materias.map((materia, index) => (
+                                <li key={index} className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg shadow-lg hover:scale-105 transition-all duration-200">
+                                    <div className="flex items-center space-x-3">
+                                        {materia.icon}
+                                        <span className="font-medium text-gray-800">{materia.nombre}</span>
                                     </div>
-                                );
-                            })}
-                        </div>
-
-                        {/* Welcome Card */}
-                        <div className="bg-gradient-to-r from-green-600 via-green-700 to-blue-700 rounded-3xl p-8 mb-8 text-white relative overflow-hidden">
-                            <div className="relative z-10">
-                                <h2 className="text-3xl font-bold mb-2">¡Bienvenida de vuelta, Amy! 👋</h2>
-                                <p className="text-green-100 text-lg mb-6">
-                                    Tienes 2 clases hoy y 3 tareas por entregar esta semana. ¡Sigues en buen ritmo!
-                                </p>
-                                <div className="flex space-x-4">
-                                    <button className="bg-white text-green-700 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-colors">
-                                        Ver Horario
-                                    </button>
-                                    <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-green-700 transition-colors">
-                                        Mis Tareas
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="absolute right-0 top-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-32 translate-x-32"></div>
-                            <div className="absolute right-0 bottom-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-16 translate-x-16"></div>
-                        </div>
-
-                        {/* Quick Actions */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {[
-                                { title: 'Próximas Clases', desc: 'Ve tu horario de hoy', color: 'from-blue-50 to-blue-100', textColor: 'text-blue-700' },
-                                { title: 'Tareas Pendientes', desc: 'Revisa lo que tienes por hacer', color: 'from-orange-50 to-orange-100', textColor: 'text-orange-700' },
-                                { title: 'Recursos de Estudio', desc: 'Accede a materiales y guías', color: 'from-purple-50 to-purple-100', textColor: 'text-purple-700' },
-                                { title: 'Foros de Discusión', desc: 'Conecta con tus compañeros', color: 'from-green-50 to-green-100', textColor: 'text-green-700' },
-                                { title: 'Biblioteca Digital', desc: 'Busca libros y artículos', color: 'from-indigo-50 to-indigo-100', textColor: 'text-indigo-700' },
-                                { title: 'Centro de Ayuda', desc: 'Obtén soporte académico', color: 'from-pink-50 to-pink-100', textColor: 'text-pink-700' },
-                            ].map((action, index) => (
-                                <div key={index} className={`bg-gradient-to-br ${action.color} rounded-2xl p-6 hover:shadow-lg transition-all duration-200 cursor-pointer border border-gray-100`}>
-                                    <h3 className={`text-lg font-semibold ${action.textColor} mb-2`}>{action.title}</h3>
-                                    <p className="text-gray-600 text-sm">{action.desc}</p>
-                                </div>
+                                    <span className="text-sm text-gray-600">Tareas Pendientes: {materia.pendiente}</span>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
                 </main>
             </div>
