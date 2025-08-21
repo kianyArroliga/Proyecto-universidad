@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider, Route, Navigate, createRoutesFromElements, ScrollRestoration, Outlet } from 'react-router-dom';
 
 import './App.css';
-import Login from './paginas/login';
+import Login from './Paginas/login';
 import MainContent from './componentes/MainContent';
 import UserProfile from './componentes/UserProfile';
 import Sidebar from './componentes/Sidebar';
