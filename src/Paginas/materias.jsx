@@ -23,8 +23,8 @@ const Dashboard = () => {
   const [week, setWeek] = useState(1); // Controla la semana actual
 
   const menuItems = [
-    { icon: Home, label: "Inicio", active: true },
-    { icon: BookOpen, label: "Materias", active: false },
+    { icon: Home, label: "Inicio", active: false },
+    { icon: BookOpen, label: "Materias", active: true },
     { icon: BarChart3, label: "Calificaciones", active: false },
     { icon: User, label: "Perfil de Usuario", active: false },
     { icon: LogOut, label: "Cerrar Sesión", active: false },
