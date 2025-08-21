@@ -9,6 +9,7 @@ import Sidebar from './componentes/Sidebar';
 import Plantilla from './Paginas/plantilla';
 import Inicio from './paginas/inicio';
 import ListaMaterias from './paginas/listaMaterias';
+import Calendario from './paginas/calendario';
 
 // --- Componentes mínimos ---
 function RootRedirect() {
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
       <Route path="/plantilla" element={<Plantilla />} />
       <Route path="/inicio" element={<Inicio />} />
       <Route path="/listaMaterias" element={<ListaMaterias/>} />
+      <Route path="/calendario" element={<Calendario/>} />
       <Route path="*" element={<ErrorPage />} />
     </>
   )
