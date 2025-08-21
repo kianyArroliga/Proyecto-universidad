@@ -12,6 +12,7 @@ import ListaMaterias from './paginas/listaMaterias';
 import Calendario from './paginas/calendario';
 import Materias from './Paginas/materias';
 import Calificaciones from './Paginas/calificaciones';
+import Perfil from './Paginas/perfil';
 
 // --- Componentes mínimos ---
 function RootRedirect() {
@@ -58,6 +59,7 @@ const router = createBrowserRouter(
       <Route path="/calendario" element={<Calendario/>} />
       <Route path="/materias" element={<Materias />} />
       <Route path="/calificaciones" element={<Calificaciones />} />
+      <Route path="/perfil" element={<Perfil />} />
       <Route path="*" element={<ErrorPage />} />
     </>
   )
