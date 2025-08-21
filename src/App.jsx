@@ -7,12 +7,12 @@ import MainContent from './componentes/MainContent';
 import UserProfile from './componentes/UserProfile';
 import Sidebar from './componentes/Sidebar';
 import Plantilla from './Paginas/plantilla';
-import Inicio from './paginas/inicio';
+import Inicio from './Paginas/inicio';
 
 // --- Componentes mínimos ---
 function RootRedirect() {
   // Redirige / -> /usuario/login
-  return <Navigate to="/inicio" replace />;
+  return <Navigate to="/usuario/login" replace />;
 }
 
 function LayoutUsuario() {
@@ -40,13 +40,17 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootRedirect />} />
-      <Route path="/usuario" element={<LayoutUsuario />} errorElement={<ErrorPage />}>
-        <Route path="login" element={<Login />} />
-        <Route path="main" element={<MainContent />} />
-        <Route path="perfil" element={<UserProfile />} />
+
+      <Route path="/usuario/login" element={<Login />} />
+
+      <Route element={<LayoutUsuario />}>
+        <Route path="/usuario/main" element={<MainContent />} />
+        <Route path="/usuario/perfil" element={<UserProfile />} />
       </Route>
+
       <Route path="/plantilla" element={<Plantilla />} />
-      <Route path="/inicio" element={<Inicio/>} />
+      <Route path="/inicio" element={<Inicio />} />
+      <Route path="*" element={<ErrorPage />} />
     </>
   )
 );
